@@ -5,7 +5,7 @@ metadata:
   namespace: data-plane
 spec:
   hosts:
-  - frontend.{{ .Values.global.localClusterDomain }}
+  - '*.local'
   gateways:
   - istio-system/frontend-gateway
   http:
