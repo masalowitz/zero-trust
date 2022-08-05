@@ -131,7 +131,7 @@ clusterGroup:
       name: sm-data-plane
       namespace: data-plane
       project: hub
-      path: charts/all/sm-data-plan
+      path: charts/all/sm-data-plane
 
 
   imperative:
