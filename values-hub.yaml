@@ -116,6 +116,7 @@ clusterGroup:
       path: charts/all/config-demo
         
     sm-apps:
+      name: data-plane
       namespace: data-plane
       project: hub
       path: charts/all/sm-apps
