@@ -5,7 +5,7 @@ metadata:
   namespace: data-plane
 spec:
   hosts:
-  - backend.data-plane.svc.cluster.local
+  - '*.local'
   http:
   - route:
     - destination:
