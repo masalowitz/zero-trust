@@ -12,6 +12,8 @@ clusterGroup:
   - config-demo
   - data-plane
   - control-plane
+  - istio-system
+  - zta-sso
 
   subscriptions:
     acm:
@@ -50,6 +52,13 @@ clusterGroup:
       source: redhat-operators
       channel: latest
       csv: rhacs-operator.v3.69.1
+      
+    rhsso-operator:
+      name: rhsso-operator
+      namespace: zta-sso
+      source: redhat-operators
+      channel: stable
+      csv: rhsso-operator.7.5.1-opr-010
 
   projects:
   - hub
