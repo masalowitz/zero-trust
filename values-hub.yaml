@@ -62,6 +62,7 @@ clusterGroup:
   projects:
   - hub
   - config-demo
+  - istio-system
 
   applications:
     acm:
@@ -113,6 +114,12 @@ clusterGroup:
       namespace: config-demo
       project: config-demo
       path: charts/all/config-demo
+      
+    control-plane:
+      name: control-plane
+      namespace: istio-system
+      project: istio-system
+      path: charts/all/control-plane
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
