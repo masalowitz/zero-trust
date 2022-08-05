@@ -8,4 +8,4 @@ spec:
     matchLabels:
       app: backend
   mtls:
-    mode: STRICT #UNSET, DISABLE, PERMISSIVE, STRICT
+    mode: PERMISSIVE #UNSET, DISABLE, PERMISSIVE, STRICT
