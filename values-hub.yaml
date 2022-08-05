@@ -114,12 +114,24 @@ clusterGroup:
       namespace: config-demo
       project: config-demo
       path: charts/all/config-demo
-      
-    control-plane:
-      name: control-plane
+        
+    sm-apps:
+      namespace: data-plane
+      project: hub
+      path: charts/all/sm-apps
+
+    sm-control-plane:
+      name: sm-control-plane
       namespace: istio-system
-      project: istio-system
-      path: charts/all/control-plane
+      project: hub
+      path: charts/all/sm-control-plane
+
+    sm-data-plane:
+      name: sm-data-plane
+      namespace: data-plane
+      project: hub
+      path: charts/all/sm-data-plan
+
 
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
