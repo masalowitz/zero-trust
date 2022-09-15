@@ -64,6 +64,7 @@ clusterGroup:
   - hub
   - config-demo
   - istio-system
+  - data-plane
 
   applications:
     acm:
