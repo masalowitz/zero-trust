@@ -116,6 +116,12 @@ clusterGroup:
       namespace: config-demo
       project: config-demo
       path: charts/all/config-demo
+
+    sm-control-plane:
+      name: control-plane
+      namespace: control-plane
+      project: control-plane
+      path: charts/all/sm-control-plane
         
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
