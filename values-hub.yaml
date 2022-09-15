@@ -13,6 +13,7 @@ clusterGroup:
   - data-plane
   - istio-system
   - zta-sso
+  - openshift-operators-redhat
 
   subscriptions:
     acm:
