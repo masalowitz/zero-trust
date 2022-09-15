@@ -11,7 +11,7 @@ clusterGroup:
   - golang-external-secrets
   - config-demo
   - data-plane
-  - istio-system
+  - control-plane
   - zta-sso
   - openshift-operators-redhat
 
@@ -63,7 +63,7 @@ clusterGroup:
   projects:
   - hub
   - config-demo
-  - istio-system
+  - control-plane
   - data-plane
 
   applications:
@@ -117,25 +117,6 @@ clusterGroup:
       project: config-demo
       path: charts/all/config-demo
         
-    sm-control-plane:
-      name: sm-control-plane
-      namespace: istio-system
-      project: hub
-      path: charts/all/sm-control-plane
-
-    sm-data-plane:
-      name: sm-data-plane
-      namespace: data-plane
-      project: hub
-      path: charts/all/sm-data-plane
-
-    sm-apps:
-      name: data-plane
-      namespace: data-plane
-      project: hub
-      path: charts/all/sm-apps
-
-
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule
