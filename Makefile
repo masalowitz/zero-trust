@@ -31,6 +31,7 @@ helmlint:
 	@for t in "$(wildcard charts/*/*)"; do helm lint $$t; if [ $$? != 0 ]; then exit 1; fi; done
 
 .PHONY: kubeval
+KUBECONFORM_SKIP=-skip 'CustomResourceDefinition,Pipeline,Task,KfDef,Integration,IntegrationPlatform,Kafka,ActiveMQArtemis,KafkaTopic,SeldonDeployment,KafkaMirrorMaker'
 kubeconform:
 	make -f common/Makefile CHARTS="$(wildcard charts/all/*)" kubeconform
 	make -f common/Makefile CHARTS="$(wildcard charts/hub/*)" kubeconform
