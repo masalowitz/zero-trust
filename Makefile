@@ -26,12 +26,12 @@ test:
 	make -f common/Makefile CHARTS="$(wildcard charts/hub/*)" PATTERN_OPTS="-f values-global.yaml -f values-hub.yaml" test
 	#make -f common/Makefile CHARTS="$(wildcard charts/region/*)" PATTERN_OPTS="-f values-region-one.yaml" test
 
+KUBECONFORM_SKIP=-skip 'CustomResourceDefinition,ServiceMeshControlPlane,Gateway,ServiceMeshMemberRoll'
 helmlint:
 	# no regional charts just yet: "$(wildcard charts/region/*)"
 	@for t in "$(wildcard charts/*/*)"; do helm lint $$t; if [ $$? != 0 ]; then exit 1; fi; done
 
 .PHONY: kubeval
-KUBECONFORM_SKIP=-skip 'CustomResourceDefinition,Pipeline,Task,KfDef,Integration,IntegrationPlatform,Kafka,ActiveMQArtemis,KafkaTopic,SeldonDeployment,KafkaMirrorMaker,ServiceMeshControlPlane,Gateway,ServiceMeshMemberRoll'
 kubeconform:
 	make -f common/Makefile CHARTS="$(wildcard charts/all/*)" kubeconform
 	make -f common/Makefile CHARTS="$(wildcard charts/hub/*)" kubeconform
