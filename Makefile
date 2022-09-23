@@ -33,8 +33,8 @@ helmlint:
 
 .PHONY: kubeval
 kubeconform:
-	make -f common/Makefile CHARTS="$(wildcard charts/all/*)" kubeconform
-	make -f common/Makefile CHARTS="$(wildcard charts/hub/*)" kubeconform
+	make -f common/Makefile CHARTS="$(wildcard charts/all/*)" KUBECONFORM_SKIP=$(KUBECONFORM_SKIP) kubeconform
+	make -f common/Makefile CHARTS="$(wildcard charts/hub/*)" KUBECONFORM_SKIP=$(KUBECONFORM_SKIP) kubeconform
 
 super-linter: ## Runs super linter locally
 	podman run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true	\
