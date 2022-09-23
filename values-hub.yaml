@@ -26,39 +26,39 @@ clusterGroup:
       name: jaeger-product
       source: redhat-operators
       channel: stable
-      csv: jaeger-operator.v1.24.1
+      csv: jaeger-operator.v1.36.0-2
 
-    elastic:  
+    elastic:
       name: elasticsearch-operator
-      namespace: openshift-operators-redhat
       source: redhat-operators
       channel: stable
-      csv: elasticsearch-operator.5.3.5-20
+      csv: elasticsearch-operator.5.5.2
 
-    kiali:
+
+    kiali-ossm:
       name: kiali-ossm
       source: redhat-operators
       channel: stable
-      csv: kiali-operator.v1.36.7
+      csv: kiali-operator.v1.48.2
 
     servicemeshoperator:
       name: servicemeshoperator
       source: redhat-operators
       channel: stable
-      csv: servicemeshoperator.v2.1.1
+      csv: servicemeshoperator.v2.2.2
 
     rhacs-operator:
       name: rhacs-operator
       source: redhat-operators
       channel: latest
-      csv: rhacs-operator.v3.69.1
-      
+      csv: rhacs-operator.v3.71.0
+
     rhsso-operator:
       name: rhsso-operator
       namespace: zta-sso
       source: redhat-operators
       channel: stable
-      csv: rhsso-operator.7.5.1-opr-010
+      csv: rhsso-operator.7.5.1-opr-005
 
   projects:
   - hub
