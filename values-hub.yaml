@@ -14,6 +14,7 @@ clusterGroup:
   - control-plane
   - zta-sso
   - openshift-operators-redhat
+  - openshift-compliance
 
   subscriptions:
     acm:
@@ -46,6 +47,11 @@ clusterGroup:
       source: redhat-operators
       channel: stable
       csv: servicemeshoperator.v2.2.2
+
+    openshift-compliance:
+      name: compliance-operator
+      namespace: openshift-compliance
+      channel: release-0.1
 
     rhacs-operator:
       name: rhacs-operator
@@ -110,6 +116,12 @@ clusterGroup:
       namespace: golang-external-secrets
       project: hub
       path: common/golang-external-secrets
+
+    compliance-operator:
+      name: compliance-operator
+      namespace: openshift-compliance
+      project: hub
+      path: charts/hub/compliance-operator
 
     config-demo:
       name: config-demo
