@@ -35,7 +35,6 @@ clusterGroup:
       channel: stable
       csv: elasticsearch-operator.5.5.2
 
-
     kiali-ossm:
       name: kiali-ossm
       source: redhat-operators
@@ -117,7 +116,7 @@ clusterGroup:
       project: hub
       path: common/golang-external-secrets
 
-    compliance-operator:
+    openshift-compliance:
       name: compliance-operator
       namespace: openshift-compliance
       project: hub
