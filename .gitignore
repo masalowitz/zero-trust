@@ -1,9 +1,11 @@
 *~
 *.swp
 *.swo
-values-secret.yaml
+values-secret*
 .*.expected.yaml
 pattern-vault.init
 vault.init
+*.vscode
 super-linter.log
-common/pattern-vault.init
+/archive
+
