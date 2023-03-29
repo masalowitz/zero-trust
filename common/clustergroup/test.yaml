@@ -1,9 +1,6 @@
 clusterGroup:
   name: hub
   isHubCluster: true
-  # Note: setting this to true stores the vault unseal keys inside a cluster secret and
-  # is fundamentally insecure
-  insecureUnsealVaultInsideCluster: false
 
   namespaces:
   - open-cluster-management
@@ -13,8 +10,7 @@ clusterGroup:
 
   indexImages:
   - name: snr
-    image: quay.io/mshitrit/self-node-remediation-manager-index
-    version: 0.0.104
+    image: quay.io/mshitrit/self-node-remediation-manager-index:0.0.104
 
   subscriptions:
     acm:
@@ -96,9 +92,9 @@ clusterGroup:
   managedClusterGroups:
     region-one:
       name: region-one
-      labels:
-      - name: clusterGroup
-        value: region-one
+      hostedArgoSites:
+      - perth
+      - sydney
       helmOverrides:
       - name: clusterGroup.isHubCluster
         value: false

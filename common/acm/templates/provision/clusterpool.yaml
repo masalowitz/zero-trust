@@ -6,6 +6,7 @@ kind: ManagedClusterSet
 metadata:
   annotations:
     cluster.open-cluster-management.io/submariner-broker-ns: {{ .name }}-broker
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: {{ .name }}
 spec:
   clusterSelector:
@@ -14,7 +15,7 @@ spec:
 {{- range .clusterPools }}
 
 {{- $pool := . }}
-{{- $poolName := cat .name $group.name | replace " " "-" }}
+{{- $poolName := print .name "-" $group.name }}
 
 {{- $cloud := "None" }}
 {{- $region := "None" }}
@@ -33,6 +34,7 @@ metadata:
   name: "{{ $poolName }}"
   annotations:
     argocd.argoproj.io/sync-wave: "10"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     cloud: {{ $cloud }}
     region: '{{ $region }}'
@@ -52,8 +54,6 @@ spec:
     name: img{{ .openshiftVersion }}-x86-64-appsub
   pullSecretRef:
     name: {{ $poolName }}-pull-secret
-  sshPrivateKeySecretRef:
-    name: {{ $poolName }}-ssh-private-key
   skipMachinePools: true # Disable MachinePool as using custom install-config
   platform:
     {{ $cloud }}:
@@ -68,12 +68,19 @@ metadata:
   name: '{{ . }}-{{ $group.name }}'
   annotations:
     argocd.argoproj.io/sync-wave: "20"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
     cluster.open-cluster-management.io/createmanagedcluster: "true"
   labels:
     clusterClaimName: {{ . }}-{{ $group.name }}
-    {{- range $group.labels }}
+  {{- if (not $group.acmlabels) }}
+    clusterGroup: {{ $group.name }}
+  {{- else if eq (len $group.acmlabels) 0 }}
+    clusterGroup: {{ $group.name }}
+  {{- else }}
+    {{- range $group.acmlabels }}
     {{ .name }}: {{ .value }}
     {{- end }}
+  {{- end }}
 spec:
   clusterPoolName: {{ $pool.name }}
 ---
